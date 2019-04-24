@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css"/>
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/fh-3.1.4/rr-1.2.4/sl-1.3.0/datatables.min.css"/>
+
+      <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.18/fh-3.1.4/rr-1.2.4/sl-1.3.0/datatables.min.js"></script>
+    </head>
+    <body>
+      <div class="tables">
+        <table id="open-issues" class="display compact wrap" cellspacing="0" width="100%"></table>
+      </div>
+    </body>
+    <script>
+      $(document).ready(function() {
+        var openIssues = $('#open-issues').DataTable( {
+          paging: true,
+          orderCellsTop: true,
+          "fixedHeader": true,
+          "pageLength": 100,
+          "oLanguage": {
+            "sSearch": "",
+            "sEmptyTable": "No Data found based on parameters"
+          },
+          "sDom": '<"top"lpif>t<"bottom"><"clear">',
+          ajax: "data.txt",
+          //"columns": buildDynamicDataTable($('#dataTable'), dynamicColumns),
+          "columns": [
+                { data: 'id', title: "id" },
+                { data: 'name', title: "name" },
+                { data: 'position', title: "position" },
+                { data: 'salary', title: "salary" },
+          ]
+        } );
+    } );
+    </script>
+    <style>
+
+    </style>
+</html>
